@@ -134,13 +134,89 @@ img {
 
 
 /*************   grid-02   *************/
+.grid-02 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* auto-fit, Modifica o tamanho do elemento dependendo da tela "estica o elemento". minmax, min e max da tela*/
+    gap: var(--spacing-md);
+}
 
+.box-2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    border: 1px solid var(--color-light);
+    padding-bottom: var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.box-2 img {
+    border-top-left-radius: var(--radius-md);
+    border-top-right-radius: var(--radius-md);
+}
+
+.box-2 a {
+    background-color: var(--color-dark);
+    color: var(--color-light);
+}
 /************* fim grid-02 *************/
 
-/*************   grid-03   *************/
 
+/*************   grid-03   *************/
+.grid-03 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /*Definir o tamanho das linhas que sõa geradas automaticamente no grid*/
+    grid-auto-rows: 400px;
+    gap: var(--spacing-md);
+}
+
+.box-03 {
+    border-radius: var(--radius-md);
+    overflow: hidden; /*O que passa da div é apagado*/
+}
+
+.grid-03 img {
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Quando usar span lembrar dele no responsivo senão quebrar o seu layut */
+.col-2 {grid-column: span 2;}
+.row-2 {grid-row: span 2;}
 /************* fim grid-03 *************/
 
-/*************   responsivo   *************/
 
+/*************   responsivo   *************/
+@media ( width <= 1024px ) {
+    .hero h1 {
+        width: 80%;
+    }
+
+    .grid-01 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: auto;
+    }
+
+    .box-1:last-child {
+        grid-column: span 2;
+    }
+
+    .grid-03 {
+        grid-template-columns: 1fr;
+    }
+
+    .col-2 { grid-column: span 1;}
+    .row-2 { grid-row: 1;}
+}
+
+@media ( width <= 680px ) {
+    .grid-01 {
+        grid-template-columns: 1fr;
+    }
+
+    .box-1:last-child {
+        grid-column: span 1; /*Cuidado com o span*/
+    }
+}
 /************* fim responsivo *************/
